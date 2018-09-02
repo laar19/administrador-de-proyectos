@@ -5,100 +5,81 @@
     include 'inc/templates/barra.php';
 ?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Listado de Administradores
-        <small>GdlWebCamp</small>
-      </h1>
-    </section>
+<div class="listado-pendientes">
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
+    <main class="contenido-principal">
 
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Maneja los usuarios en esta sección</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="registros" class="table table-bordered table-striped">
+        <h1>
+            Listado de Usuarios
+        </h1>
+
+        <div class="">
+
+          <table>
                 <thead>
-                <tr>
-                  <th>Usuario</th>
-                  <th>Nombre</th>
-                  <th>Acciones</th>
-                </tr>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
                 </thead>
 
                 <?php
 
-                    // importar la conexión
-                    include "inc/funciones/conexion.php";
+                // importar la conexión
+                include "inc/funciones/conexion.php";
 
-                    try {
+                try {
 
-                        $sql = "SELECT id, usuario, nombre FROM usuarios";
+                    $sql = "SELECT id, usuario, nombre FROM usuarios";
 
-                        $resultado = $conn->query($sql);
+                    $resultado = $conn->query($sql);
 
-                    }
-                    catch (\Exception $e) {
-                        $error = $e->getMessage();
-                        echo $error;
-                    }
+                }
+                catch (\Exception $e) {
+                    $error = $e->getMessage();
+                    echo $error;
+                }
 
-                    while($usuario = $resultado->fetch_assoc()) { ?>
+                while($usuario = $resultado->fetch_assoc()) { ?>
 
-                        <tr>
-                            <td> <?php echo $usuario["usuario"]; ?> </td>
-                            <td> <?php echo $usuario["nombre"]; ?> </td>
-                            <td>
-                                <!-- class="btn bg-orange btn-flat margin" es una clase de font awesome -->
-                                <a href="editar-admin.php?id=<?php echo $usuario['id']; ?>" class="btn bg-orange btn-flat margin">
-                                <i class="fa fa-pencil"></i> </a>
-                                <a href="#" data-id="<?php echo $usuario['id'] ?>" data-tipo="admin" class="btn bg-maroon btn-flat margin borrar_registro"> <i class="fa fa-trash"></i> </a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td> <?php echo $usuario["usuario"]; ?> </td>
+                        <td> <?php echo $usuario["nombre"]; ?> </td>
+                        <td>
+                            <!-- class="btn bg-orange btn-flat margin" es una clase de font awesome -->
+                            <a href="editar-admin.php?id=<?php echo $usuario['id']; ?>">
+                            <i class="fas fa-edit"></i> </a>
+                            <a href="#" data-id="<?php echo $usuario['id'] ?>"> <i class="fas fa-trash"></i> </a>
+                        </td>
+                    </tr>
 
-                    <?php } ?>
+                <?php } ?>
 
                 <?php
-                    /*
-                    // quita el while para imprimir esto
-                    echo "<pre>";
-                    var_dump($usuario);
-                    echo "</pre>";
-                    */
-
-
+                /*
+                // quita el while para imprimir esto
+                echo "<pre>";
+                var_dump($usuario);
+                echo "</pre>";
+                */
                 ?>
 
                 <tfoot>
-                <tr>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
-                </tr>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
                 </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+            </table>
 
-  <?php
-      include 'inc/templates/footer.php';
-  ?>
+        </div>
+
+    </main> <!-- <main class="contenido-principal"> -->
+
+</div> <!-- <div class="listado-pendientes"> -->
+
+<?php
+    include 'inc/templates/footer.php';
+?>
