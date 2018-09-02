@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli('localhost', 'mint', 'mint', 'uptask');
+$conn = new mysqli('localhost', 'mint', 'mint', 'proyectos');
 
 /*
 echo "<pre>";

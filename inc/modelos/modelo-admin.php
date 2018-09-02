@@ -8,13 +8,21 @@ $arreglo = array(
 die(json_encode($arreglo));
 die(json_encode($_POST));
 */
-
-$accion = $_POST["accion"];
-$usuario = $_POST["usuario"];
-if(isset($_POST["nombre"])){
-     $nombre = $_POST["nombre"];
+if(isset($_POST["accion"])){
+    $accion = $_POST["accion"];
 }
-$clave = $_POST["clave"];
+if(isset($_POST["usuario"])){
+    $usuario = $_POST["usuario"];
+}
+if(isset($_POST["nombre"])){
+    $nombre = $_POST["nombre"];
+}
+if(isset($_POST["clave"])){
+    $clave = $_POST["clave"];
+}
+if(isset($_POST["id_usuario"])){
+    $id_usuario = (int) $_POST["id_usuario"];
+}
 
 if($accion === "crear") {
     // Código para crear los administradores
@@ -78,10 +86,12 @@ if($accion === "login") {
         $stmt = $conn->prepare("SELECT usuario, id, clave FROM usuarios WHERE usuario = ?");
         $stmt->bind_param("s", $usuario);
         $stmt->execute();
+
         // Loguear el usuario
         // bind_result trae el resultado de la consulta y lo asigna a las variables pasadas como parámetro
         $stmt->bind_result($nombre_usuario, $id_usuario, $clave_usuario);
         $stmt->fetch();
+
         if($nombre_usuario){
             // El usuario existe, verificar la clave
             if(password_verify($clave, $clave_usuario )){
@@ -96,24 +106,69 @@ if($accion === "login") {
                     "nombre" => $nombre_usuario,
                     "tipo" => $accion
                 );
-            } else {
+            }
+            else {
                 // Login incorrecto, enviar error
                 $respuesta = array(
                         "resultado" => "clave Incorrecto"
                 );
             }
-
-        } else {
+        }
+        else {
             $respuesta = array(
                 "error" => "Usuario no existe"
             );
         }
+
         $stmt->close();
         $conn->close();
-    } catch(Exception $e) {
+
+    }
+    catch(Exception $e) {
         // En caso de un error, tomar la exepcion
         $respuesta = array(
             "clave" => $e->getMessage()
+        );
+    }
+
+    echo json_encode($respuesta);
+}
+
+if($accion === "eliminar") {
+
+    // importar la conexion
+    include '../funciones/conexion.php';
+
+    try {
+
+        // Realizar la consulta a la base de datos
+        $stmt = $conn->prepare("DELETE from usuarios WHERE id = ? ");
+        $stmt->bind_param('i', $id_usuario);
+        $stmt->execute();
+
+        if($stmt->affected_rows > 0) {
+            $respuesta = array(
+                "respuesta" => "correcto",
+                "id_eliminado" => $id_usuario,
+                "tipo" => $accion
+            );
+        }
+        else {
+            $respuesta = array(
+                'respuesta' => 'error',
+                "id_eliminado" => $id_usuario,
+                "tipo" => $accion
+            );
+        }
+
+        $stmt->close();
+        $conn->close();
+
+    }
+    catch(Exception $e) {
+        // En caso de un error, tomar la exepcion
+        $respuesta = array(
+            'error' => $e->getMessage()
         );
     }
 

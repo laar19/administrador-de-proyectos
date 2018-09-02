@@ -108,6 +108,11 @@ body.index {
     text-decoration: none;
 }
 
+.boton-barra:hover {
+    height: 100%;
+    background-color: #FDD835;
+}
+
 /*** sidebar**/
 .contenedor-proyectos {
     min-height: 100vh;
@@ -193,7 +198,7 @@ body.index {
 }
 
 /** Listado Pendientes **/
-.listado-pendientes {
+.listado-pendientes, .listado-usuarios {
     background-color: #F2F2F2;
     max-width: 800px;
     width: 90%;
@@ -202,26 +207,26 @@ body.index {
     border: 1px solid #999;
 }
 
-.listado-pendientes p {
+.listado-pendientes p, .listado-usuarios p {
     max-width: 80%;
     /*background-color: green;*/
 }
 
-.listado-pendientes ul {
+.listado-pendientes ul, .listado-usuarios ul {
     padding: 0;
     list-style: none;
 }
-.listado-pendientes ul li {
+.listado-pendientes ul li, .listado-usuarios ul li {
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 1.4rem;
     border-bottom: 1px solid #d1d1d1;
 }
-.listado-pendientes ul li:last-of-type {
+.listado-pendientes ul li:last-of-type, .listado-usuarios ul li:last-of-type {
     border-bottom: none;
 }
-.listado-pendientes ul li i {
+.listado-pendientes ul li i, .listado-usuarios ul li i {
     cursor: pointer;
 }
 .acciones i:last-child{

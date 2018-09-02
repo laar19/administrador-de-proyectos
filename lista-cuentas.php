@@ -5,80 +5,93 @@
     include 'inc/templates/barra.php';
 ?>
 
-<div class="listado-pendientes">
+<div class="contenedor">
+    <?php
+        include 'inc/templates/sidebar.php';
+    ?>
 
     <main class="contenido-principal">
 
-        <h1>
-            Listado de Usuarios
+        <?php
+
+            $proyecto = obtenerNombreProyecto($id_proyecto);
+
+            if($proyecto):
+        ?>
+
+        <h1>Proyecto Actual:
+            <?php foreach($proyecto as $nombre): ?>
+                <span><?php echo $nombre['nombre']; ?></span>
+            <?php endforeach;?>
         </h1>
 
-        <div class="">
+        <form action="#" id="formulario">
+            <div class="campo">
+                <label for="tarea">Tarea:</label>
+                <input type="text" placeholder="Nombre Tarea" class="nombre-tarea">
+            </div> <!-- <div class="campo"> -->
+            <div class="campo enviar">
+                <input type="hidden" id="id_proyecto" value="<?php echo $id_proyecto; ?>">
+                <input type="submit" class="boton nueva-tarea" value="Agregar">
+            </div> <!-- <div class="campo enviar"> -->
+        </form> <!-- <form action="#" id="formulario"> -->
 
-          <table>
-                <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Nombre</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
+        <?php
+            else:
+                // Si no hay proyectos seleccionados
+                echo "<p>Selecciona un Proyecto a la izquierda</p>";
+            endif;
+        ?>
 
+        <h2>Listado de Usuarios</h2>
+
+        <div class="campo enviar">
+            <a href="crear-cuenta.php" class="boton">Crear Usuario</a>
+        </div> <!-- <div class="campo enviar"> -->
+
+        <div class="listado-usuarios">
+            <ul>
                 <?php
+                    // importar la conexión
+                    include "inc/funciones/conexion.php";
 
-                // importar la conexión
-                include "inc/funciones/conexion.php";
+                    try {
+                        $sql = "SELECT id, usuario, nombre FROM usuarios";
+                        $usuarios = $conn->query($sql);
+                    }
+                    catch (\Exception $e) {
+                        $error = $e->getMessage();
+                        echo $error;
+                    }
 
-                try {
+                    if($usuarios->num_rows > 0) {
 
-                    $sql = "SELECT id, usuario, nombre FROM usuarios";
+                        foreach($usuarios as $usuario): ?>
+                            <li id="usuario:<?php echo $usuario['id'] ?>" class="usuario">
+                                <p><?php echo $usuario['usuario'] ?></p>
+                                <p><?php echo $usuario['nombre'] ?></p>
 
-                    $resultado = $conn->query($sql);
+                                    <div class="acciones">
+                                        <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $usuario['id'] ?>">
+                                        <input type="hidden" id="tipo" value="eliminar">
+                                        <i class="fa fa-trash"></i>
+                                    </div> <!-- <div class="acciones"> -->
+                                </li>
 
-                }
-                catch (\Exception $e) {
-                    $error = $e->getMessage();
-                    echo $error;
-                }
-
-                while($usuario = $resultado->fetch_assoc()) { ?>
-
-                    <tr>
-                        <td> <?php echo $usuario["usuario"]; ?> </td>
-                        <td> <?php echo $usuario["nombre"]; ?> </td>
-                        <td>
-                            <!-- class="btn bg-orange btn-flat margin" es una clase de font awesome -->
-                            <a href="editar-admin.php?id=<?php echo $usuario['id']; ?>">
-                            <i class="fas fa-edit"></i> </a>
-                            <a href="#" data-id="<?php echo $usuario['id'] ?>"> <i class="fas fa-trash"></i> </a>
-                        </td>
-                    </tr>
-
-                <?php } ?>
-
-                <?php
-                /*
-                // quita el while para imprimir esto
-                echo "<pre>";
-                var_dump($usuario);
-                echo "</pre>";
-                */
+                        <?php endforeach;
+                    }
+                    else {
+                        echo "<p class='lista-vacia'>Error</p>";
+                    }
                 ?>
 
-                <tfoot>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Nombre</th>
-                        <th>Acciones</th>
-                    </tr>
-                </tfoot>
-            </table>
+            </ul>
 
-        </div>
+        </div> <!-- <div class="listado-usuarios"> -->
 
     </main> <!-- <main class="contenido-principal"> -->
 
-</div> <!-- <div class="listado-pendientes"> -->
+</div> <!-- <div class="contenedor"> -->
 
 <?php
     include 'inc/templates/footer.php';

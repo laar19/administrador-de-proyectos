@@ -1,8 +1,6 @@
-
-
 eventListeners();
 // lista de proyectos
-var listaProyectos = document.querySelector('ul#proyectos');
+//var listaProyectos = document.querySelector('ul#proyectos');
 
 function eventListeners() {
     // boton para crear proyecto
@@ -10,12 +8,10 @@ function eventListeners() {
         document.querySelector('.crear-proyecto a').addEventListener('click', nuevoProyecto);
     }
 
-
     // Boton para una nueva tarea
     if(document.querySelector('.nueva-tarea') !== null ) {
         document.querySelector('.nueva-tarea').addEventListener('click', agregarTarea);
     }
-
 
     // Botones para las acciones de las tareas
     if(document.querySelector('.listado-pendientes')) {
@@ -26,7 +22,7 @@ function eventListeners() {
 function nuevoProyecto(e) {
     e.preventDefault();
 
-var listaProyectos = document.querySelector('ul#proyectos');
+    var listaProyectos = document.querySelector('ul#proyectos');
     // Crea un <input> para el nombre del nuevo proyecto
     var nuevoProyecto = document.createElement('li');
     nuevoProyecto.innerHTML = '<input type="text" id="nuevo-proyecto">';
