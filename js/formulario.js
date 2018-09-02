@@ -1,4 +1,3 @@
-
 eventListeners();
 
 function eventListeners() {
@@ -12,7 +11,9 @@ function validarRegistro(e) {
     //console.log("aquí vamos");
 
     var usuario = document.querySelector("#usuario").value;
-    var nombre = document.querySelector("#nombre").value;
+    if(document.querySelector("#nombre")) {
+        var nombre = document.querySelector("#nombre").value;
+    }
     var clave = document.querySelector("#clave").value;
     var tipo = document.querySelector("#tipo").value;
 
@@ -32,7 +33,9 @@ function validarRegistro(e) {
             // datos que se envian al servidor
             var datos = new FormData();
             datos.append("usuario", usuario);
-            datos.append("nombre", nombre);
+            if(document.querySelector("#nombre")) {
+                datos.append("nombre", nombre);
+            }
             datos.append("clave", clave);
             datos.append("accion", tipo);
             //console.log(datos);
@@ -47,7 +50,7 @@ function validarRegistro(e) {
             // retorno de datos
             xhr.onload = function(){
                 if(this.status === 200) {
-                    //console.log(xhr.responseText);
+                    console.log(xhr.responseText);
 
                     //se convierte la respuesta en un objeto leible por javascript
                     var respuesta = JSON.parse(xhr.responseText);

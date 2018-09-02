@@ -25,7 +25,7 @@
             </div>
             <div class="campo">
                 <label for="password">Password: </label>
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="clave" id="clave" placeholder="Contraseña">
             </div>
             <div class="campo enviar">
                 <input type="hidden" id="tipo" value="login">

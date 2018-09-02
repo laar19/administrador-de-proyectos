@@ -11,7 +11,9 @@ die(json_encode($_POST));
 
 $accion = $_POST["accion"];
 $usuario = $_POST["usuario"];
-$nombre = $_POST["nombre"];
+if(isset($_POST["nombre"])){
+     $nombre = $_POST["nombre"];
+}
 $clave = $_POST["clave"];
 
 if($accion === "crear") {
@@ -81,8 +83,8 @@ if($accion === "login") {
         $stmt->bind_result($nombre_usuario, $id_usuario, $clave_usuario);
         $stmt->fetch();
         if($nombre_usuario){
-            // El usuario existe, verificar el clave
-            if(clave_verify($clave, $clave_usuario )){
+            // El usuario existe, verificar la clave
+            if(password_verify($clave, $clave_usuario )){
                 // Iniciar la sesion
                 session_start();
                 $_SESSION["nombre"] = $usuario;
