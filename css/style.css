@@ -90,9 +90,12 @@ body {
 body.index {
     height: 100vh;
 }
+
 .barra {
     background-color: #455A64;
+    /*
     padding: 1rem;
+    */
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -108,9 +111,28 @@ body.index {
     text-decoration: none;
 }
 
-.boton-barra:hover {
+.columna1, .columna2, .columna3, .columna4 {
+    width: 25%;
     height: 100%;
-    background-color: #FDD835;
+}
+
+.columna1 {
+    padding-left: 10px;
+}
+
+.columna2, .columna3, .columna4 {
+    padding-top: 10px;
+    padding-left: 150px;
+}
+
+.columna1 h1:hover {
+    color: #FDD835;
+}
+
+.columna2 a:hover, .columna3 a:hover, .columna4 a:hover {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FDD835;
 }
 
 /*** sidebar**/
@@ -162,7 +184,6 @@ body.index {
     color: #FDD835;
 }
 
-
 /** Contenido Principal */
 .contenedor {
     display: flex;
@@ -198,7 +219,7 @@ body.index {
 }
 
 /** Listado Pendientes **/
-.listado-pendientes, .listado-usuarios {
+.listado-pendientes, .listado-usuarios, .listado-proyectos {
     background-color: #F2F2F2;
     max-width: 800px;
     width: 90%;
@@ -207,26 +228,26 @@ body.index {
     border: 1px solid #999;
 }
 
-.listado-pendientes p, .listado-usuarios p {
+.listado-pendientes p, .listado-usuarios p, .listado-proyectos p {
     max-width: 80%;
     /*background-color: green;*/
 }
 
-.listado-pendientes ul, .listado-usuarios ul {
+.listado-pendientes ul, .listado-usuarios ul, .listado-proyectos ul {
     padding: 0;
     list-style: none;
 }
-.listado-pendientes ul li, .listado-usuarios ul li {
+.listado-pendientes ul li, .listado-usuarios ul li, .listado-proyectos ul li {
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 1.4rem;
     border-bottom: 1px solid #d1d1d1;
 }
-.listado-pendientes ul li:last-of-type, .listado-usuarios ul li:last-of-type {
+.listado-pendientes ul li:last-of-type, .listado-usuarios ul li:last-of-type, .listado-proyectos ul li:last-of-type {
     border-bottom: none;
 }
-.listado-pendientes ul li i, .listado-usuarios ul li i {
+.listado-pendientes ul li i, .listado-usuarios ul li i, .listado-proyectos ul li i {
     cursor: pointer;
 }
 .acciones i:last-child{

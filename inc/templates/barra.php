@@ -1,9 +1,19 @@
 <div class="barra">
 
-    <a href="index.php" class="boton-barra"><h1>Administración de Proyectos</h1></a>
+    <div class="columna1">
+        <a href="index.php"><h1>Administración de Proyectos</h1></a>
+    </div>
 
-    <a href="lista-cuentas.php" class="boton-barra">Usuarios</a>
+    <div class="columna2">
+        <a href="lista-usuarios.php">Usuarios</a>
+    </div>
 
-    <a href="login.php?cerrar_sesion=true" class="boton-barra">Cerrar Sesión</a>
+    <div class="columna3">
+        <a href="lista-proyectos.php">Proyectos</a>
+    </div>
+
+    <div class="columna4">
+        <a href="login.php?cerrar_sesion=true">Cerrar Sesión</a>
+    </div>
 
 </div>

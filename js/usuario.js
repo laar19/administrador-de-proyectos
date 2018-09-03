@@ -56,7 +56,7 @@ function validarRegistro(e) {
         var xhr = new XMLHttpRequest();
 
         // abrir la conexión.
-        xhr.open("POST", "inc/modelos/modelo-admin.php", true);
+        xhr.open("POST", "inc/modelos/modelo-usuario.php", true);
 
         // retorno de datos
         xhr.onload = function(){
@@ -162,7 +162,7 @@ function eliminarUsuarioBD(usuario) {
     datos.append('accion', 'eliminar');
 
     // abrir la conexion
-    xhr.open('POST', 'inc/modelos/modelo-admin.php', true);
+    xhr.open('POST', 'inc/modelos/modelo-usuario.php', true);
 
     // on load
     xhr.onload = function() {

@@ -6,6 +6,7 @@
 ?>
 
 <div class="contenedor">
+
     <?php
         include 'inc/templates/sidebar.php';
     ?>
@@ -46,7 +47,7 @@
         <h2>Listado de Usuarios</h2>
 
         <div class="campo enviar">
-            <a href="crear-cuenta.php" class="boton">Crear Usuario</a>
+            <a href="crear-usuario.php" class="boton">Crear Usuario</a>
         </div> <!-- <div class="campo enviar"> -->
 
         <div class="listado-usuarios">
@@ -72,7 +73,6 @@
                                 <p><?php echo $usuario['nombre'] ?></p>
 
                                     <div class="acciones">
-                                        <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $usuario['id'] ?>">
                                         <input type="hidden" id="tipo" value="eliminar">
                                         <i class="fa fa-trash"></i>
                                     </div> <!-- <div class="acciones"> -->
