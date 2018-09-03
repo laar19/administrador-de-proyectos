@@ -161,7 +161,7 @@ function eliminarUsuarioBD(usuario) {
     datos.append('id_usuario', idUsuario[1]);
     datos.append('accion', 'eliminar');
 
-    // abrir la conexion
+    // abrir la conexión
     xhr.open('POST', 'inc/modelos/modelo-usuario.php', true);
 
     // on load

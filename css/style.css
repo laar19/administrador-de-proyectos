@@ -2,7 +2,9 @@ html {
     box-sizing: border-box;
     height: 100%;
 }
-*, *:before, *:after {
+
+*, *:before,
+*:after {
     box-sizing: inherit;
 }
 
@@ -10,28 +12,34 @@ body {
     font-family: 'Lato', sans-serif;
     min-height: 100%;
 }
+
 .swal2-shown aside {
     height: 100vh;
 }
+
 /** Login **/
 .login,
-.crear-cuenta {
+.crear-usuario {
     background: #455A64;
 }
+
 .contenedor-formulario {
     display: flex;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
 }
+
 .contenedor-formulario h1 {
     text-align: center;
     color: white;
 }
+
 .contenedor-formulario h1  span{
     font-weight: 400;
     font-size: 1.2rem;
 }
+
 .caja-login {
     background-color: #F2F2F2;
     border: 1px solid #707070;
@@ -44,16 +52,19 @@ body {
     box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
     padding: 3rem;
 }
+
 .campo {
     display: flex;
     margin-bottom: 1rem;
     align-items: center;
 }
+
 .campo label {
     flex: 0 0 100px;
     text-align: right;
     padding-right: 1rem;
 }
+
 .campo input[type="text"],
 .campo input[type="password"] {
     height: 3rem;
@@ -63,9 +74,11 @@ body {
     border-radius: 5rem;
     padding-left: 2rem;
 }
+
 .enviar {
    justify-content: flex-end;
 }
+
 .boton {
     background-color: #FDD835;
     text-align: center;
@@ -77,10 +90,12 @@ body {
     border: none;
     font-weight: 900;
 }
+
 .boton:hover {
     cursor: pointer;
     background-color: rgb(219, 184, 29)!important;
 }
+
 .campo a {
     color: black;
     text-decoration: none;
@@ -93,25 +108,31 @@ body.index {
 
 .barra {
     background-color: #455A64;
-    /*
-    padding: 1rem;
-    */
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #707070;
+    -webkit-box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
+    -moz-box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
+    box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
 }
+
 .barra h1 {
     color: white;
     margin:0;
     font-size: 1.4rem;
 }
+
 .barra a {
     color: white;
     text-decoration: none;
 }
 
-.columna1, .columna2, .columna3, .columna4 {
+.columna1,
+.columna2,
+.columna3,
+.columna4 {
     width: 25%;
     height: 100%;
 }
@@ -120,7 +141,9 @@ body.index {
     padding-left: 10px;
 }
 
-.columna2, .columna3, .columna4 {
+.columna2,
+.columna3,
+.columna4 {
     padding-top: 10px;
     padding-left: 150px;
 }
@@ -129,7 +152,9 @@ body.index {
     color: #FDD835;
 }
 
-.columna2 a:hover, .columna3 a:hover, .columna4 a:hover {
+.columna2 a:hover,
+.columna3 a:hover,
+.columna4 a:hover {
     font-size: 15px;
     font-weight: bold;
     color: #FDD835;
@@ -144,15 +169,18 @@ body.index {
     padding-top: 1rem;
     overflow: scroll;
 }
+
 .panel {
     padding: 1rem;
     margin: 1rem;
 }
+
 .panel a {
     color: white;
     font-weight: bold;
     text-decoration: none;
 }
+
 .panel h2 {
     color: #FDD835;
     font-weight: 900;
@@ -164,6 +192,7 @@ body.index {
 .crear-proyecto i {
     margin-left: 1rem;
 }
+
 .crear-proyecto a {
     color: #455A64;
 }
@@ -177,9 +206,11 @@ body.index {
     padding: 1.5rem 0 0 0;
     margin: 0;
 }
+
 .lista-proyectos ul li {
     margin-bottom: 1rem;
 }
+
 .lista-proyectos ul li a:hover {
     color: #FDD835;
 }
@@ -189,11 +220,13 @@ body.index {
     display: flex;
     height: calc( 100% - 60px);
 }
+
 .contenido-principal {
     flex: 1;
     padding: 1rem;
     overflow: scroll;
 }
+
 .contenido-principal h1,
 .contenido-principal h2 {
     text-align: center;
@@ -201,13 +234,16 @@ body.index {
 .contenido-principal h1 {
     font-size: 1.8rem;
 }
+
 .contenido-principal h2 {
     font-size: 1.4rem;
     margin-top: 2rem;
 }
+
 .contenido-principal h1 span {
     font-weight: 400;
 }
+
 .agregar-tarea {
     max-width: 800px;
     width: 90%;
@@ -219,7 +255,9 @@ body.index {
 }
 
 /** Listado Pendientes **/
-.listado-pendientes, .listado-usuarios, .listado-proyectos {
+.listado-tareas,
+.listado-usuarios,
+.listado-proyectos {
     background-color: #F2F2F2;
     max-width: 800px;
     width: 90%;
@@ -228,34 +266,50 @@ body.index {
     border: 1px solid #999;
 }
 
-.listado-pendientes p, .listado-usuarios p, .listado-proyectos p {
+.listado-tareas p,
+.listado-usuarios p,
+.listado-proyectos p {
     max-width: 80%;
     /*background-color: green;*/
 }
 
-.listado-pendientes ul, .listado-usuarios ul, .listado-proyectos ul {
+.listado-tareas ul,
+.listado-usuarios ul,
+.listado-proyectos ul {
     padding: 0;
     list-style: none;
 }
-.listado-pendientes ul li, .listado-usuarios ul li, .listado-proyectos ul li {
+
+.listado-tareas ul li,
+.listado-usuarios ul li,
+.listado-proyectos ul li {
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 1.4rem;
     border-bottom: 1px solid #d1d1d1;
 }
-.listado-pendientes ul li:last-of-type, .listado-usuarios ul li:last-of-type, .listado-proyectos ul li:last-of-type {
+
+.listado-pendtareasientes ul li:last-of-type,
+.listado-usuarios ul li:last-of-type,
+.listado-proyectos ul li:last-of-type {
     border-bottom: none;
 }
-.listado-pendientes ul li i, .listado-usuarios ul li i, .listado-proyectos ul li i {
+
+.listado-tareas ul li i,
+.listado-usuarios ul li i,
+.listado-proyectos ul li i {
     cursor: pointer;
 }
+
 .acciones i:last-child{
     margin-left: 3rem;
 }
+
 .completo {
     color: #00B762;
 }
+
 .alerta {
     background-color: red;
     padding: .5rem;

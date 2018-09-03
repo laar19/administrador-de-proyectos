@@ -20,29 +20,29 @@
             if($proyecto):
         ?>
 
-        <h1>Proyecto Actual:
-            <?php foreach($proyecto as $nombre): ?>
-                <span><?php echo $nombre['nombre']; ?></span>
-            <?php endforeach;?>
-        </h1>
+                <h1>Proyecto Actual:
+                    <?php foreach($proyecto as $nombre): ?>
+                        <span><?php echo $nombre['nombre']; ?></span>
+                    <?php endforeach;?>
+                </h1>
 
-        <form action="#" id="formulario">
-            <div class="campo">
-                <label for="tarea">Tarea:</label>
-                <input type="text" placeholder="Nombre Tarea" class="nombre-tarea">
-            </div> <!-- <div class="campo"> -->
-            <div class="campo enviar">
-                <input type="hidden" id="id_proyecto" value="<?php echo $id_proyecto; ?>">
-                <input type="submit" class="boton nueva-tarea" value="Agregar">
-            </div> <!-- <div class="campo enviar"> -->
-        </form> <!-- <form action="#" id="formulario"> -->
+                <form action="#" id="formulario">
+                    <div class="campo">
+                        <label for="tarea">Tarea:</label>
+                        <input type="text" placeholder="Nombre Tarea" class="nombre-tarea">
+                    </div> <!-- <div class="campo"> -->
+                    <div class="campo enviar">
+                        <input type="hidden" id="id_proyecto" value="<?php echo $id_proyecto; ?>">
+                        <input type="submit" class="boton nueva-tarea" value="Agregar">
+                    </div> <!-- <div class="campo enviar"> -->
+                </form> <!-- <form action="#" id="formulario"> -->
 
-        <?php
+    <?php
             else:
                 // Si no hay proyectos seleccionados
                 echo "<p>Selecciona un Proyecto a la izquierda</p>";
             endif;
-        ?>
+    ?>
 
         <h2>Listado de Proyectos</h2>
 
@@ -63,7 +63,8 @@
 
                     if($proyectos->num_rows > 0) {
 
-                        foreach($proyectos as $proyecto): ?>
+                        foreach($proyectos as $proyecto):
+                ?>
                             <li id="proyecto:<?php echo $proyecto['id'] ?>" class="proyecto">
                                 <p><?php echo $proyecto['nombre'] ?></p>
 
@@ -75,7 +76,7 @@
                                     </div> <!-- <div class="acciones"> -->
                                 </li>
 
-                        <?php endforeach;
+                <?php       endforeach;
                     }
                     else {
                         echo "<p class='lista-vacia'>Error</p>";
