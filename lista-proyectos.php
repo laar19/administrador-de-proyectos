@@ -65,13 +65,12 @@
 
                         foreach($proyectos as $proyecto):
                 ?>
-                            <li id="proyecto:<?php echo $proyecto['id'] ?>" class="proyecto">
-                                <p><?php echo $proyecto['nombre'] ?></p>
+                            <li id="proyecto:<?php echo $proyecto['id']; ?>" class="proyecto">
+                                <p><?php echo $proyecto['nombre']; ?></p>
 
                                     <div class="acciones">
-                                        <input type="hidden" id="id_proyecto" name="id_proyecto" value="<?php echo $proyecto['id'] ?>">
+                                        <input type="hidden" id="id_proyecto" name="id_proyecto" value="<?php echo $proyecto['id']; ?>">
                                         <input type="hidden" id="tipo" value="eliminar">
-                                        <i class="fas fa-edit"></i>
                                         <i class="fa fa-trash"></i>
                                     </div> <!-- <div class="acciones"> -->
                                 </li>

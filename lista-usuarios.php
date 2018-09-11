@@ -27,14 +27,17 @@
                 </h1>
 
                 <form action="#" id="formulario">
+
                     <div class="campo">
                         <label for="tarea">Tarea:</label>
                         <input type="text" placeholder="Nombre Tarea" class="nombre-tarea">
                     </div> <!-- <div class="campo"> -->
+
                     <div class="campo enviar">
                         <input type="hidden" id="id_proyecto" value="<?php echo $id_proyecto; ?>">
                         <input type="submit" class="boton nueva-tarea" value="Agregar">
                     </div> <!-- <div class="campo enviar"> -->
+
                 </form> <!-- <form action="#" id="formulario"> -->
 
         <?php
@@ -70,9 +73,9 @@
 
                         foreach($usuarios as $usuario):
                 ?>
-                            <li id="usuario:<?php echo $usuario['id'] ?>" class="usuario">
-                                <p><?php echo $usuario['usuario'] ?></p>
-                                <p><?php echo $usuario['nombre'] ?></p>
+                            <li id="usuario:<?php echo $usuario['id']; ?>" class="usuario">
+                                <p><?php echo $usuario['usuario']; ?></p>
+                                <p><?php echo $usuario['nombre']; ?></p>
 
                                     <div class="acciones">
                                         <input type="hidden" id="tipo" value="eliminar">

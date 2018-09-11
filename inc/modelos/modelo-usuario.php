@@ -26,6 +26,7 @@
         $id_usuario = (int) $_POST["id_usuario"];
     }
 
+    // crear un usuario
     if($accion === "crear") {
         // Código para crear los administradores
 
@@ -60,7 +61,8 @@
             }
             else {
                 $respuesta = array(
-                    "respuesta" => "error"
+                    "respuesta" => "error",
+                    "error" => error_get_last()
                 );
             }
 
@@ -71,13 +73,15 @@
         catch(Exception $e) {
             // En caso de un error, tomar la exepcion
             $respuesta = array(
-                "error" => $e->getMessage()
+                "error" => $e->getMessage(),
+                "error" => error_get_last()
             );
         }
 
         echo json_encode($respuesta);
     }
 
+    // iniciar sesión
     if($accion === "login") {
         // escribir codigo que loguee a los administradores
 
@@ -112,13 +116,15 @@
                 else {
                     // Login incorrecto, enviar error
                     $respuesta = array(
-                            "resultado" => "clave Incorrecto"
+                        "resultado" => "clave Incorrecta",
+                        "error" => error_get_last()
                     );
                 }
             }
             else {
                 $respuesta = array(
-                    "error" => "Usuario no existe"
+                    "error" => "Usuario no existe",
+                    "error" => error_get_last()
                 );
             }
 
@@ -129,23 +135,25 @@
         catch(Exception $e) {
             // En caso de un error, tomar la exepcion
             $respuesta = array(
-                "clave" => $e->getMessage()
+                "clave" => $e->getMessage(),
+                "error" => error_get_last()
             );
         }
 
         echo json_encode($respuesta);
     }
 
+    // eliminar un usuario
     if($accion === "eliminar") {
 
         // importar la conexion
-        include '../funciones/conexion.php';
+        include "../funciones/conexion.php";
 
         try {
 
             // Realizar la consulta a la base de datos
             $stmt = $conn->prepare("DELETE from usuarios WHERE id = ? ");
-            $stmt->bind_param('i', $id_usuario);
+            $stmt->bind_param("i", $id_usuario);
             $stmt->execute();
 
             if($stmt->affected_rows > 0) {
@@ -157,9 +165,10 @@
             }
             else {
                 $respuesta = array(
-                    'respuesta' => 'error',
+                    "respuesta" => "error",
                     "id_eliminado" => $id_usuario,
-                    "tipo" => $accion
+                    "tipo" => $accion,
+                    "error" => error_get_last()
                 );
             }
 
@@ -170,7 +179,8 @@
         catch(Exception $e) {
             // En caso de un error, tomar la exepcion
             $respuesta = array(
-                'error' => $e->getMessage()
+                "error" => $e->getMessage(),
+                "error" => error_get_last()
             );
         }
 

@@ -9,12 +9,13 @@ function eventListeners() {
         document.querySelector('.crear-proyecto a').addEventListener('click', nuevoProyecto);
     }
 
-    // Botones para las acciones de los proyectos
+    // Botón para eliminar el proyecto
     if(document.querySelector('.listado-proyectos')) {
-        document.querySelector('.listado-proyectos').addEventListener('click', accionesProyectos);
+        document.querySelector('.listado-proyectos').addEventListener('click', eliminarProyecto);
     }
 }
 
+// crear proyecto HTML
 function nuevoProyecto(e) {
     e.preventDefault();
 
@@ -47,6 +48,7 @@ function nuevoProyecto(e) {
     });
 }
 
+// guardar proyecto en la base de datos
 function guardarProyectoDB(nombreProyecto) {
     //console.log(nombreProyecto);
 
@@ -67,7 +69,7 @@ function guardarProyectoDB(nombreProyecto) {
     xhr.onload = function() {
         // si el llamado es correcto y encontró destino: 200
         if(this.status === 200) {
-            // console.log(xhr.responseText);
+            console.log(xhr.responseText);
 
             // obtener datos de la respuesta
             var respuesta = JSON.parse(xhr.responseText);
@@ -129,7 +131,8 @@ function guardarProyectoDB(nombreProyecto) {
 
 }
 
-function accionesProyectos(e) {
+// eliminar proyecto del HTML
+function eliminarProyecto(e) {
     e.preventDefault();
 
     // escucha toda la clase listado-proyectos cuando se hace click
@@ -137,13 +140,6 @@ function accionesProyectos(e) {
 
     // delegation
     // console.log(e.target);
-
-    if(e.target.classList.contains('fa-edit')) {
-        //editar
-    }
-    else {
-        //ya veremos
-    }
 
     if(e.target.classList.contains('fa-trash')) {
         swal({
@@ -174,6 +170,7 @@ function accionesProyectos(e) {
     }
 }
 
+// eliminar proyecto de la base de datos
 function eliminarProyectoBD(proyecto) {
     var idProyecto = proyecto.id.split(':');
 

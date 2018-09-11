@@ -1,5 +1,63 @@
 eventListeners();
 
+validarContraenia();
+
+function validarContraenia() {
+    // se deshabilita el botón
+    $("#crear-usuario").attr("disabled", true);
+    $("#crear-usuario").css({"background-color": "grey"});
+    $("#crear-usuario").mouseenter(function() {
+        $(this).css("background-color", "grey");
+    }).mouseleave(function() {
+        $(this).css("background-color", "grey");
+    });
+
+    $("#repetir_clave").on("input", function() { // puede ser on blur también
+        var clave_nueva = $("#clave").val();
+        var repetir_clave = $("#repetir_clave").val();
+
+        // $this se refiere a #repetir_clave
+        if($(this).val() == clave_nueva) {
+            // si las contraseñas coinciden se habilita el botón
+            $("#resultado-clave").text("Correcto");
+            $("#clave").css({"background-color": "green"});
+            $("#repetir_clave").css({"background-color": "green"});
+
+            $("#crear-usuario").attr("disabled", false);
+            $("#crear-usuario").css({"background-color": "#FDD835"});
+
+            $("#crear-usuario").mouseenter(function() {
+                $(this).css("cursor", "pointer");
+            });
+
+            $("#crear-usuario").mouseenter(function() {
+                $(this).css("background-color", "rgb(219, 184, 29)");
+            }).mouseleave(function() {
+                $(this).css("background-color", "#FDD835");
+            });
+        }
+        // si las contraseñas no coinciden se deshabilita el botón
+        else {
+            $("#crear-usuario").attr("disabled", true);
+            $("#resultado-clave").text("Las contraseñas no coinciden");
+            $("#clave").css({"background-color": "red"});
+            $("#repetir_clave").css({"background-color": "red"});
+            $("#crear-usuario").css({"background-color": "grey"});
+
+            $("#crear-usuario").mouseenter(function() {
+                $(this).css("cursor", "auto");
+            });
+
+            $("#crear-usuario").mouseenter(function() {
+                $(this).css("background-color", "grey");
+            }).mouseleave(function() {
+                $(this).css("background-color", "grey");
+            });
+        }
+
+    });
+}
+
 function eventListeners() {
     if (document.querySelector("#formulario")) {
         document.querySelector("#formulario").addEventListener("submit", validarRegistro);

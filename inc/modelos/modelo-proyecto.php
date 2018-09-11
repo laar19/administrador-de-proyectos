@@ -12,52 +12,58 @@
 
     //echo json_encode($_POST);
 
-    if($accion === 'crear') {
+    // crear un proyecto
+    if($accion === "crear") {
         // importar la conexion
-        include '../funciones/conexion.php';
+        include "../funciones/conexion.php";
 
         try {
             // Realizar la consulta a la base de datos
             $stmt = $conn->prepare("INSERT INTO proyectos (nombre) VALUES (?) ");
-            $stmt->bind_param('s', $proyecto);
+            $stmt->bind_param("s", $proyecto);
             $stmt->execute();
 
             if($stmt->affected_rows > 0) {
                 $respuesta = array(
-                    'respuesta' => 'correcto',
-                    'id_insertado' => $stmt->insert_id,
-                    'tipo' => $accion,
-                    'nombre_proyecto' => $proyecto
+                    "respuesta" => "correcto",
+                    "id_insertado" => $stmt->insert_id,
+                    "tipo" => $accion,
+                    "nombre_proyecto" => $proyecto
                 );
             }
             else {
                 $respuesta = array(
-                    'respuesta' => 'error'
+                    "respuesta" => "error",
+                    "error" => error_get_last()
                 );
             }
+
             $stmt->close();
             $conn->close();
-            
-        } catch(Exception $e) {
+
+        }
+        catch(Exception $e) {
             // En caso de un error, tomar la exepcion
             $respuesta = array(
-                'error' => $e->getMessage()
+                "error" => $e->getMessage(),
+                "error" => error_get_last()
             );
         }
 
         echo json_encode($respuesta);
     }
 
+    // eliminar un proyecto
     if($accion === "eliminar") {
 
         // importar la conexion
-        include '../funciones/conexion.php';
+        include "../funciones/conexion.php";
 
         try {
 
             // Realizar la consulta a la base de datos
             $stmt = $conn->prepare("DELETE from proyectos WHERE id = ? ");
-            $stmt->bind_param('i', $id_proyecto);
+            $stmt->bind_param("i", $id_proyecto);
             $stmt->execute();
 
             if($stmt->affected_rows > 0) {
@@ -69,9 +75,10 @@
             }
             else {
                 $respuesta = array(
-                    'respuesta' => 'error',
+                    "respuesta" => "error",
                     "id_eliminado" => $id_proyecto,
-                    "tipo" => $accion
+                    "tipo" => $accion,
+                    "error" => error_get_last()
                 );
             }
 
@@ -82,7 +89,8 @@
         catch(Exception $e) {
             // En caso de un error, tomar la exepcion
             $respuesta = array(
-                'error' => $e->getMessage()
+                "error" => $e->getMessage(),
+                "error" => error_get_last()
             );
         }
 

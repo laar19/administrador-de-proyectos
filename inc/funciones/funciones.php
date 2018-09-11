@@ -1,4 +1,5 @@
 <?php
+
     // Obtiene la página actual que se ejecuta
     function obtenerPaginaActual() {
         $archivo = basename($_SERVER['PHP_SELF']);
@@ -45,4 +46,5 @@
             return false;
         }
     }
+
 ?>

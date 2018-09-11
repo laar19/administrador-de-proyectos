@@ -51,7 +51,7 @@ function agregarTarea(e) {
             if(this.status === 200) {
                 // todo correcto
                 var respuesta = JSON.parse(xhr.responseText);
-                console.log(respuesta);
+                // console.log(respuesta);
 
                 // asignar valores
 
@@ -190,16 +190,14 @@ function cambiarEstadoTarea(tarea, estado) {
     // on load
     xhr.onload = function() {
         if(this.status === 200) {
-            console.log(JSON.parse(xhr.responseText));
-
-
+            console.log(JSON.parse(xhr.responseText)); //SyntaxError: JSON.parse: unexpected end of data at line 1 column 1 of the JSON data
         }
     }
     // enviar la petición
     xhr.send(datos);
 }
 
-// Elimina las tareas de la base de datos
+// Elimina la tarea de la base de datos
 function eliminarTareaBD(tarea) {
     var idTarea = tarea.id.split(':');
 

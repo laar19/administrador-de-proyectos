@@ -28,10 +28,12 @@
             <label for="usuario">Usuario: </label>
             <input type="text" name="usuario" id="usuario" placeholder="Usuario">
             </div> <!-- <div class="campo"> -->
+
         <div class="campo">
             <label for="password">Password: </label>
             <input type="password" name="clave" id="clave" placeholder="Contraseña">
         </div> <!-- <div class="campo"> -->
+            
         <div class="campo enviar">
             <input type="hidden" id="tipo" value="login">
             <input type="submit" class="boton" value="Iniciar Sesión">
