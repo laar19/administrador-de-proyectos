@@ -82,7 +82,7 @@ function agregarTarea(e) {
                        var nuevaTarea = document.createElement('li');
 
                        // agregamos el ID
-                       nuevaTarea.id = 'tarea:'+id_insertado;
+                       nuevaTarea.id = 'tarea:'+ id_insertado;
 
                        // agregar la clase tarea
                        nuevaTarea.classList.add('tarea');
