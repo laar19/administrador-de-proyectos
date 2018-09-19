@@ -47,6 +47,44 @@
         echo json_encode($respuesta);
     }
 
+    // cambia el estado de una tarea
+    if($accion === "actualizar") {
+        // importar la conexion
+        include "../funciones/conexion.php";
+
+        try {
+            // Realizar la consulta a la base de datos
+            $stmt = $conn->prepare("UPDATE tareas set estado = ? WHERE id = ? ");
+            $stmt->bind_param("ii", $estado, $id_tarea);
+            $stmt->execute();
+
+            if($stmt->affected_rows > 0) {
+                $respuesta = array(
+                    "respuesta" => "correcto"
+                );
+            }
+            else {
+                $respuesta = array(
+                    "respuesta" => "error",
+                    "error" => error_get_last()
+                );
+            }
+
+            $stmt->close();
+            $conn->close();
+
+        }
+        catch(Exception $e) {
+            // En caso de un error, tomar la exepcion
+            $respuesta = array(
+                "error" => $e->getMessage(),
+                "error" => error_get_last()
+            );
+        }
+
+        echo json_encode($respuesta);
+    }
+
     // eliminar una tarea
     if($accion === "eliminar") {
         // importar la conexion
