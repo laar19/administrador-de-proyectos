@@ -190,7 +190,7 @@ function cambiarEstadoTarea(tarea, estado) {
     // on load
     xhr.onload = function() {
         if(this.status === 200) {
-            console.log(JSON.parse(xhr.responseText)); //SyntaxError: JSON.parse: unexpected end of data at line 1 column 1 of the JSON data
+            console.log(JSON.parse(xhr.responseText));
         }
     }
     // enviar la petición
