@@ -61,7 +61,6 @@
 
         try {
 
-            // Realizar la consulta a la base de datos
             $stmt = $conn->prepare("DELETE from proyectos WHERE id = ? ");
             $stmt->bind_param("i", $id_proyecto);
             $stmt->execute();

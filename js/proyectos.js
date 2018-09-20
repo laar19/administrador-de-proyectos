@@ -111,9 +111,6 @@ function guardarProyectoDB(nombreProyecto) {
 
 
                 }
-                else {
-                    // Se actualizo o se elimino
-                }
             }
             else {
                 // hubo un error
@@ -154,6 +151,7 @@ function eliminarProyecto(e) {
         }).then((result) => {
             if (result.value) {
                 var proyectoEliminar = e.target.parentElement.parentElement;
+                console.log(result.value);
                 // Borrar de la BD
                 eliminarProyectoBD(proyectoEliminar);
 
@@ -189,6 +187,16 @@ function eliminarProyectoBD(proyecto) {
     xhr.onload = function() {
         if(this.status === 200) {
             console.log(JSON.parse(xhr.responseText));
+            var respuesta = JSON.parse(xhr.responseText);
+            var respuesta_recibida = respuesta.respuesta;
+
+            if(respuesta_recibida == "error") {
+                swal({
+                  type: 'error',
+                  title: '¡Error!',
+                  text: '¡No puede eliminar un proyecto que contenga tareas!'
+                })
+            }
 
             // Comprobar que haya tareas restantes
             var listaProyectosRestantes = document.querySelectorAll('li.proyecto');
