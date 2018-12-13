@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli('localhost', 'mint', 'mint', 'proyectos');
+    $conn = new mysqli('localhost', 'usuario', 'usuario', 'proyectos');
 
     /*
     echo "<pre>";
