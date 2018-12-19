@@ -30,7 +30,7 @@
             </div> <!-- <div class="campo"> -->
 
         <div class="campo">
-            <label for="password">Password: </label>
+            <label for="password">Clave: </label>
             <input type="password" name="clave" id="clave" placeholder="Contraseña">
         </div> <!-- <div class="campo"> -->
             
