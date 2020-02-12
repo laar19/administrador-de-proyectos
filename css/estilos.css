@@ -133,7 +133,8 @@ body.index {
 .columna1,
 .columna2,
 .columna3,
-.columna4 {
+.columna4,
+.columna5 {
     width: 25%;
     height: 100%;
 }
@@ -144,7 +145,8 @@ body.index {
 
 .columna2,
 .columna3,
-.columna4 {
+.columna4,
+.columna5 {
     padding-top: 10px;
     padding-left: 150px;
 }
@@ -155,7 +157,8 @@ body.index {
 
 .columna2 a:hover,
 .columna3 a:hover,
-.columna4 a:hover {
+.columna4 a:hover,
+.columna5 a:hover {
     font-size: 15px;
     font-weight: bold;
     color: #FDD835;

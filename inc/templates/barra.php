@@ -16,4 +16,9 @@
         <a href="login.php?cerrar_sesion=true">Cerrar Sesión</a>
     </div> <!-- <div class="columna4"> -->
 
+    <div class="columna5">
+        <a href="https://github.com/laar19/proyectos">Código</a>
+        <i class="fab fa-github"></i>
+    </div> <!-- <div class="columna5"> -->
+
 </div> <!-- <div class="barra"> -->
